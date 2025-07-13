@@ -1,14 +1,22 @@
 import React, { useState } from 'react';
+import { useAuth } from './AuthContext';
+import AuthPage from './AuthPage';
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [showAuthModal, setShowAuthModal] = useState(false);
+    const { isAuthenticated, user, signOut } = useAuth();
 
     const handleLogin = () => {
-        // login implementation
+        setShowAuthModal(true);
     };
 
     const handleSignUp = () => {
-        // signup implementation
+        setShowAuthModal(true);
+    };
+
+    const handleSignOut = async () => {
+        await signOut();
     };
 
     const toggleMenu = () => {
@@ -48,6 +56,20 @@ const Header = () => {
 
                     {/* Auth Buttons - Desktop */}
                     <div className="hidden md:flex items-center space-x-4">
+                        {isAuthenticated ? (
+                            <div className="flex items-center space-x-4">
+                                <span className="text-sm text-gray-300">
+                                    Welcome, {user?.fullName}
+                                </span>
+                                <button
+                                    onClick={handleSignOut}
+                                    className="px-4 py-2 text-sm font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
+                                >
+                                    Sign Out
+                                </button>
+                            </div>
+                        ) : (
+                            <>
                         <button
                             onClick={handleLogin}
                             className="px-4 py-2 text-sm font-medium border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white rounded-md transition-colors"
@@ -60,6 +82,8 @@ const Header = () => {
                         >
                             Sign Up
                         </button>
+                            </>
+                        )}
                     </div>
 
                     {/* Mobile menu button */}
@@ -106,6 +130,15 @@ const Header = () => {
                         </div>
                         <div className="pt-4 pb-3 border-t border-gray-600">
                             <div className="px-2 space-y-2">
+                                {isAuthenticated ? (
+                                    <button
+                                        onClick={handleSignOut}
+                                        className="w-full text-left px-3 py-2 text-base font-medium text-white bg-red-600 hover:bg-red-700 rounded-lg transition-colors"
+                                    >
+                                        Sign Out
+                                    </button>
+                                ) : (
+                                    <>
                                 <button
                                     onClick={handleLogin}
                                     className="w-full text-left px-3 py-2 text-base font-medium border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white rounded-md transition-colors"
@@ -118,11 +151,40 @@ const Header = () => {
                                 >
                                     Sign Up
                                 </button>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
                 )}
             </div>
+            
+            {/* Auth Modal */}
+            {showAuthModal && (
+                <div className="fixed inset-0 z-50 overflow-y-auto">
+                    <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+                        <div className="fixed inset-0 transition-opacity" aria-hidden="true">
+                            <div className="absolute inset-0 bg-gray-500 opacity-75" onClick={() => setShowAuthModal(false)}></div>
+                        </div>
+                        <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+                        <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                            <div className="absolute top-0 right-0 pt-4 pr-4">
+                                <button
+                                    type="button"
+                                    className="bg-white rounded-md text-gray-400 hover:text-gray-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                    onClick={() => setShowAuthModal(false)}
+                                >
+                                    <span className="sr-only">Close</span>
+                                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <AuthPage onSuccess={() => setShowAuthModal(false)} />
+                        </div>
+                    </div>
+                </div>
+            )}
         </header>
     );
 };
