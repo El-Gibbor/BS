@@ -256,7 +256,7 @@ const AuthPage = () => {
                       required
                       value={formData.fullName}
                       onChange={(e) => handleInputChange('fullName', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                       placeholder="Enter your full name"
                     />
                   </div>
@@ -277,7 +277,7 @@ const AuthPage = () => {
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     className={`w-full pl-10 pr-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
                       errors.email ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    } text-gray-900`}
                     placeholder="your.email@alu.edu"
                   />
                 </div>
@@ -303,7 +303,7 @@ const AuthPage = () => {
                     onChange={(e) => handleInputChange('password', e.target.value)}
                     className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
                       errors.password ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    } text-gray-900`}
                     placeholder="Enter your password"
                   />
                   <button
@@ -355,7 +355,7 @@ const AuthPage = () => {
                       onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
                       className={`w-full pl-10 pr-10 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 ${
                         errors.confirmPassword ? 'border-red-500' : 'border-gray-300'
-                      }`}
+                      } text-gray-900`}
                       placeholder="Confirm your password"
                     />
                     <button
@@ -394,7 +394,7 @@ const AuthPage = () => {
                       required
                       value={formData.university}
                       onChange={(e) => handleInputChange('university', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                       placeholder="African Leadership University"
                     />
                   </div>
@@ -408,7 +408,7 @@ const AuthPage = () => {
                       required
                       value={formData.yearOfStudy}
                       onChange={(e) => handleInputChange('yearOfStudy', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                     >
                       <option value="">Select your year</option>
                       {yearOptions.map(year => (
@@ -427,7 +427,7 @@ const AuthPage = () => {
                       required
                       value={formData.major}
                       onChange={(e) => handleInputChange('major', e.target.value)}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                       placeholder="e.g., Business, Engineering, etc."
                     />
                   </div>
@@ -441,7 +441,7 @@ const AuthPage = () => {
                       value={formData.bio}
                       onChange={(e) => handleInputChange('bio', e.target.value)}
                       rows={3}
-                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                       placeholder="Tell us a bit about yourself..."
                     />
                   </div>
@@ -465,7 +465,7 @@ const AuthPage = () => {
                             value={skillInput}
                             onChange={(e) => setSkillInput(e.target.value)}
                             onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
-                            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                             placeholder="e.g., Mathematics, Programming, etc."
                           />
                           <button
@@ -506,7 +506,7 @@ const AuthPage = () => {
                             type="number"
                             value={formData.hourlyRate}
                             onChange={(e) => handleInputChange('hourlyRate', e.target.value)}
-                            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                            className="w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                             placeholder="0.00"
                             min="0"
                             step="0.01"
@@ -544,7 +544,7 @@ const AuthPage = () => {
                           value={formData.teachingExperience}
                           onChange={(e) => handleInputChange('teachingExperience', e.target.value)}
                           rows={3}
-                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                          className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
                           placeholder="Describe your teaching or tutoring experience..."
                         />
                       </div>
