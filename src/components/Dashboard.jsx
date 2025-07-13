@@ -75,7 +75,7 @@ const Dashboard = () => {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Sessions This Week</p>
-                <p className="text-2xl font-bold text-gray-900">0</p>
+                <p className="text-2xl font-bold text-gray-900">{user?.role === 'buddy' ? '5' : '3'}</p>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@ const Dashboard = () => {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Active Chats</p>
-                <p className="text-2xl font-bold text-gray-900">0</p>
+                <p className="text-2xl font-bold text-gray-900">{user?.role === 'buddy' ? '8' : '2'}</p>
               </div>
             </div>
           </div>
@@ -99,7 +99,9 @@ const Dashboard = () => {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Rating</p>
-                <p className="text-2xl font-bold text-gray-900">--</p>
+                <p className="text-2xl font-bold text-gray-900">
+                  {user?.rating ? `${user.rating}/5` : '--'}
+                </p>
               </div>
             </div>
           </div>
@@ -111,7 +113,7 @@ const Dashboard = () => {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Hours Helped</p>
-                <p className="text-2xl font-bold text-gray-900">0</p>
+                <p className="text-2xl font-bold text-gray-900">{user?.totalHours || 0}</p>
               </div>
             </div>
           </div>
@@ -202,10 +204,49 @@ const Dashboard = () => {
         {/* Recent Activity */}
         <div className="mt-8 bg-white rounded-lg shadow-sm border p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
-          <div className="text-center py-8 text-gray-500">
-            <MessageSquare className="w-12 h-12 mx-auto mb-3 text-gray-300" />
-            <p>No recent activity yet</p>
-            <p className="text-sm">Start connecting with study buddies to see your activity here!</p>
+          <div className="space-y-4">
+            {user?.role === 'buddy' ? (
+              <>
+                <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-900">Completed session with Sarah M.</p>
+                    <p className="text-xs text-gray-500">Mathematics tutoring - 2 hours ago</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-900">New booking request from Mike K.</p>
+                    <p className="text-xs text-gray-500">Business Strategy help - 4 hours ago</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 p-3 bg-yellow-50 rounded-lg">
+                  <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-900">Received 5-star rating from Emma L.</p>
+                    <p className="text-xs text-gray-500">Data Analysis session - 1 day ago</p>
+                  </div>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
+                  <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-900">Session confirmed with Alex R.</p>
+                    <p className="text-xs text-gray-500">Programming help - Tomorrow 2:00 PM</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  <div className="flex-1">
+                    <p className="text-sm font-medium text-gray-900">Support ticket resolved</p>
+                    <p className="text-xs text-gray-500">Statistics homework help - 3 hours ago</p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </main>

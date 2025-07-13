@@ -63,20 +63,31 @@ export const AuthProvider = ({ children }) => {
   const signIn = async (credentials) => {
     setIsLoading(true);
     try {
-      // Simulate API call
-      const response = await fetch('/api/auth/signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(credentials),
-      });
-
-      if (!response.ok) {
-        throw new Error('Invalid credentials');
-      }
-
-      const data = await response.json();
+      // Simulate API call with mock data
+      await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate network delay
+      
+      // Mock successful response data
+      const data = {
+        token: 'mock-jwt-token-' + Date.now(),
+        user: {
+          id: 'user-123',
+          fullName: 'John Doe',
+          email: credentials.email,
+          university: 'African Leadership University',
+          yearOfStudy: '3rd Year',
+          major: 'Business Administration',
+          role: 'buddy', // or 'learner'
+          bio: 'Passionate about helping fellow students succeed in their academic journey.',
+          skills: ['Mathematics', 'Business Strategy', 'Data Analysis', 'Public Speaking'],
+          hourlyRate: '15.00',
+          availableTimeSlots: ['Monday Morning', 'Wednesday Afternoon', 'Friday Evening'],
+          teachingExperience: 'I have been tutoring mathematics and business courses for 2 years, helping over 50 students improve their grades.',
+          joinedDate: '2024-01-15',
+          sessionsCompleted: 23,
+          rating: 4.8,
+          totalHours: 45
+        }
+      };
       
       // Store auth data
       localStorage.setItem('authToken', data.token);
@@ -96,21 +107,31 @@ export const AuthProvider = ({ children }) => {
   const signUp = async (userData) => {
     setIsLoading(true);
     try {
-      // Simulate API call
-      const response = await fetch('/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'Registration failed');
-      }
-
-      const data = await response.json();
+      // Simulate API call with mock data
+      await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate network delay
+      
+      // Mock successful registration response
+      const data = {
+        token: 'mock-jwt-token-' + Date.now(),
+        user: {
+          id: 'user-' + Date.now(),
+          fullName: userData.fullName,
+          email: userData.email,
+          university: userData.university,
+          yearOfStudy: userData.yearOfStudy,
+          major: userData.major,
+          role: userData.role || 'learner',
+          bio: userData.bio || '',
+          skills: userData.skills || [],
+          hourlyRate: userData.hourlyRate || '',
+          availableTimeSlots: userData.availableTimeSlots || [],
+          teachingExperience: userData.teachingExperience || '',
+          joinedDate: new Date().toISOString().split('T')[0],
+          sessionsCompleted: 0,
+          rating: 0,
+          totalHours: 0
+        }
+      };
       
       // Store auth data
       localStorage.setItem('authToken', data.token);
