@@ -180,6 +180,10 @@ const Header = () => {
                                 </button>
                             </div>
                             <AuthPage onSuccess={() => setShowAuthModal(false)} />
+                            <AuthPage 
+                                defaultMode="signup" 
+                                onSuccess={() => setShowAuthModal(false)} 
+                            />
                         </div>
                     </div>
                 </div>
