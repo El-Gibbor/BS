@@ -1,9 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import { useAuth } from './auth/AuthContext';
-=======
-import { useAuth } from './AuthContext';
->>>>>>> refs/remotes/origin/main
 import { User, GraduationCap, Calendar, MessageSquare, Star, Clock, LogOut } from 'lucide-react';
 
 const Dashboard = () => {
@@ -27,11 +23,6 @@ const Dashboard = () => {
               />
               <h1 className="text-xl font-bold text-gray-900">StudyBuddy Dashboard</h1>
             </div>
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> refs/remotes/origin/main
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
                 {user?.canOfferHelp ? (
@@ -46,11 +37,6 @@ const Dashboard = () => {
                   {user?.canOfferHelp ? 'Helper' : 'Student'}
                 </span>
               </div>
-<<<<<<< HEAD
-
-=======
-              
->>>>>>> refs/remotes/origin/main
               <button
                 onClick={handleSignOut}
                 className="flex items-center space-x-1 px-3 py-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-md transition-colors"
@@ -71,11 +57,7 @@ const Dashboard = () => {
             Welcome back, {user?.fullName}! 👋
           </h2>
           <p className="text-blue-100">
-<<<<<<< HEAD
             {user?.canOfferHelp
-=======
-            {user?.canOfferHelp 
->>>>>>> refs/remotes/origin/main
               ? "Ready to help fellow students succeed today?"
               : "Let's find the perfect study buddy for your learning journey!"
             }
@@ -270,8 +252,4 @@ const Dashboard = () => {
   );
 };
 
-<<<<<<< HEAD
 export default Dashboard;
-=======
-export default Dashboard;
->>>>>>> refs/remotes/origin/main

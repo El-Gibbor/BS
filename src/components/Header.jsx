@@ -1,11 +1,6 @@
 import React, { useState } from 'react';
-<<<<<<< HEAD
 import { useAuth } from './auth/AuthContext';
 import AuthPage from './auth/AuthPage';
-=======
-import { useAuth } from './AuthContext';
-import AuthPage from './AuthPage';
->>>>>>> refs/remotes/origin/main
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -163,11 +158,6 @@ const Header = () => {
                     </div>
                 )}
             </div>
-<<<<<<< HEAD
-
-=======
-            
->>>>>>> refs/remotes/origin/main
             {/* Auth Modal */}
             {showAuthModal && (
                 <div className="fixed inset-0 z-50 overflow-y-auto">
