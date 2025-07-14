@@ -64,7 +64,7 @@ const LandingPage = () => {
                                 --
                             </div>
                             <div className="text-gray-600 dark:text-gray-300 font-medium">
-                                Study Sessions (Coming Soon)
+                                Support Sessions (Coming Soon)
                             </div>
                         </div>
                         <div className="text-center">
