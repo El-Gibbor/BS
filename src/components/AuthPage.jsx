@@ -3,7 +3,6 @@ import { User, GraduationCap, Eye, EyeOff, Mail, Lock, UserPlus, LogIn, Check, X
 
 const AuthPage = () => {
   const [isSignUp, setIsSignUp] = useState(false);
-  const [userRole, setUserRole] = useState('learner');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -20,16 +19,16 @@ const AuthPage = () => {
     yearOfStudy: '',
     major: '',
     bio: '',
-    skills: [],
+    modules: [],
     hourlyRate: '',
     availableTimeSlots: [],
-    teachingExperience: ''
+    helpExperience: ''
   });
 
   // Validation state
   const [errors, setErrors] = useState({});
   const [passwordStrength, setPasswordStrength] = useState(0);
-  const [skillInput, setSkillInput] = useState('');
+  const [moduleInput, setModuleInput] = useState('');
 
   // Available options
   const yearOptions = ['1st Year', '2nd Year', '3rd Year', '4th Year', 'Graduate'];
@@ -80,20 +79,20 @@ const AuthPage = () => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 
-  const addSkill = () => {
-    if (skillInput.trim() && !formData.skills.includes(skillInput.trim())) {
+  const addModule = () => {
+    if (moduleInput.trim() && !formData.modules.includes(moduleInput.trim())) {
       setFormData(prev => ({
         ...prev,
-        skills: [...prev.skills, skillInput.trim()]
+        modules: [...prev.modules, moduleInput.trim()]
       }));
-      setSkillInput('');
+      setModuleInput('');
     }
   };
 
-  const removeSkill = (skillToRemove) => {
+  const removeModule = (moduleToRemove) => {
     setFormData(prev => ({
       ...prev,
-      skills: prev.skills.filter(skill => skill !== skillToRemove)
+      modules: prev.modules.filter(module => module !== moduleToRemove)
     }));
   };
 
@@ -113,7 +112,7 @@ const AuthPage = () => {
     // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
-      console.log('Form submitted:', { ...formData, userRole, isSignUp });
+      console.log('Form submitted:', { ...formData, isSignUp });
       // Handle success/error here
     }, 2000);
   };
@@ -209,39 +208,6 @@ const AuthPage = () => {
             </div>
 
             {/* Role Selection */}
-            <div className="mb-6">
-              <label className="block text-sm font-medium text-gray-700 mb-3">
-                I want to join as a:
-              </label>
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setUserRole('learner')}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 ${
-                    userRole === 'learner'
-                      ? 'border-blue-500 bg-blue-50 text-blue-700'
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
-                >
-                  <User className="w-6 h-6 mx-auto mb-2" />
-                  <div className="text-sm font-medium">Learner</div>
-                  <div className="text-xs text-gray-500">Seeking help</div>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setUserRole('buddy')}
-                  className={`p-4 rounded-lg border-2 transition-all duration-200 ${
-                    userRole === 'buddy'
-                      ? 'border-blue-500 bg-blue-50 text-blue-700'
-                      : 'border-gray-200 hover:border-gray-300'
-                  }`}
-                >
-                  <GraduationCap className="w-6 h-6 mx-auto mb-2" />
-                  <div className="text-sm font-medium">Study Buddy</div>
-                  <div className="text-xs text-gray-500">Offering help</div>
-                </button>
-              </div>
-            </div>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Sign Up Fields */}
@@ -447,45 +413,47 @@ const AuthPage = () => {
                   </div>
 
                   {/* Study Buddy Specific Fields */}
-                  {userRole === 'buddy' && (
-                    <div className="space-y-4 border-t pt-4">
+                  <div className="space-y-4 border-t pt-4">
                       <h3 className="text-lg font-medium text-gray-900 flex items-center">
                         <GraduationCap className="w-5 h-5 mr-2" />
-                        Study Buddy Information
+                        Helper Information (Optional)
                       </h3>
+                      <p className="text-sm text-gray-600 mb-4">
+                        Fill out the information below if you want to offer help to other students. You can always update this later.
+                      </p>
 
-                      {/* Skills */}
+                      {/* Modules */}
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Skills & Subjects You Can Help With
+                          Modules & Subjects You Can Help With
                         </label>
                         <div className="flex space-x-2 mb-2">
                           <input
                             type="text"
-                            value={skillInput}
-                            onChange={(e) => setSkillInput(e.target.value)}
-                            onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addSkill())}
+                            value={moduleInput}
+                            onChange={(e) => setModuleInput(e.target.value)}
+                            onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addModule())}
                             className="flex-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
-                            placeholder="e.g., Mathematics, Programming, etc."
+                            placeholder="e.g., Mathematics, Programming, Business Strategy, etc."
                           />
                           <button
                             type="button"
-                            onClick={addSkill}
+                            onClick={addModule}
                             className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors duration-200"
                           >
                             Add
                           </button>
                         </div>
                         <div className="flex flex-wrap gap-2">
-                          {formData.skills.map((skill, index) => (
+                          {formData.modules.map((module, index) => (
                             <span
                               key={index}
                               className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-blue-100 text-blue-800"
                             >
-                              {skill}
+                              {module}
                               <button
                                 type="button"
-                                onClick={() => removeSkill(skill)}
+                                onClick={() => removeModule(module)}
                                 className="ml-2 text-blue-600 hover:text-blue-800"
                               >
                                 <X className="w-3 h-3" />
@@ -538,18 +506,17 @@ const AuthPage = () => {
                       {/* Teaching Experience */}
                       <div>
                         <label className="block text-sm font-medium text-gray-700 mb-1">
-                          Teaching/Tutoring Experience
+                          Help/Tutoring Experience
                         </label>
                         <textarea
-                          value={formData.teachingExperience}
-                          onChange={(e) => handleInputChange('teachingExperience', e.target.value)}
+                          value={formData.helpExperience}
+                          onChange={(e) => handleInputChange('helpExperience', e.target.value)}
                           rows={3}
                           className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 text-gray-900"
-                          placeholder="Describe your teaching or tutoring experience..."
+                          placeholder="Describe any experience you have helping other students..."
                         />
                       </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
               )}
 

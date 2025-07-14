@@ -76,16 +76,16 @@ export const AuthProvider = ({ children }) => {
           university: 'African Leadership University',
           yearOfStudy: '3rd Year',
           major: 'Business Administration',
-          role: 'buddy', // or 'learner'
           bio: 'Passionate about helping fellow students succeed in their academic journey.',
-          skills: ['Mathematics', 'Business Strategy', 'Data Analysis', 'Public Speaking'],
+          modules: ['Mathematics', 'Business Strategy', 'Data Analysis', 'Public Speaking'],
           hourlyRate: '15.00',
           availableTimeSlots: ['Monday Morning', 'Wednesday Afternoon', 'Friday Evening'],
-          teachingExperience: 'I have been tutoring mathematics and business courses for 2 years, helping over 50 students improve their grades.',
+          helpExperience: 'I have been tutoring mathematics and business courses for 2 years, helping over 50 students improve their grades.',
           joinedDate: '2024-01-15',
           sessionsCompleted: 23,
           rating: 4.8,
-          totalHours: 45
+          totalHours: 45,
+          canOfferHelp: true // Determined by having modules and availability
         }
       };
       
@@ -120,16 +120,16 @@ export const AuthProvider = ({ children }) => {
           university: userData.university,
           yearOfStudy: userData.yearOfStudy,
           major: userData.major,
-          role: userData.role || 'learner',
           bio: userData.bio || '',
-          skills: userData.skills || [],
+          modules: userData.modules || [],
           hourlyRate: userData.hourlyRate || '',
           availableTimeSlots: userData.availableTimeSlots || [],
-          teachingExperience: userData.teachingExperience || '',
+          helpExperience: userData.helpExperience || '',
           joinedDate: new Date().toISOString().split('T')[0],
           sessionsCompleted: 0,
           rating: 0,
-          totalHours: 0
+          totalHours: 0,
+          canOfferHelp: (userData.modules && userData.modules.length > 0) || (userData.availableTimeSlots && userData.availableTimeSlots.length > 0)
         }
       };
       

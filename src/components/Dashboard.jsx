@@ -26,7 +26,7 @@ const Dashboard = () => {
             
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                {user?.role === 'buddy' ? (
+                {user?.canOfferHelp ? (
                   <GraduationCap className="w-5 h-5 text-blue-600" />
                 ) : (
                   <User className="w-5 h-5 text-blue-600" />
@@ -35,7 +35,7 @@ const Dashboard = () => {
                   {user?.fullName}
                 </span>
                 <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full capitalize">
-                  {user?.role}
+                  {user?.canOfferHelp ? 'Helper' : 'Student'}
                 </span>
               </div>
               
@@ -59,7 +59,7 @@ const Dashboard = () => {
             Welcome back, {user?.fullName}! 👋
           </h2>
           <p className="text-blue-100">
-            {user?.role === 'buddy' 
+            {user?.canOfferHelp 
               ? "Ready to help fellow students succeed today?"
               : "Let's find the perfect study buddy for your learning journey!"
             }
@@ -75,7 +75,7 @@ const Dashboard = () => {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Sessions This Week</p>
-                <p className="text-2xl font-bold text-gray-900">{user?.role === 'buddy' ? '5' : '3'}</p>
+                <p className="text-2xl font-bold text-gray-900">{user?.canOfferHelp ? '5' : '3'}</p>
               </div>
             </div>
           </div>
@@ -87,7 +87,7 @@ const Dashboard = () => {
               </div>
               <div className="ml-4">
                 <p className="text-sm font-medium text-gray-600">Active Chats</p>
-                <p className="text-2xl font-bold text-gray-900">{user?.role === 'buddy' ? '8' : '2'}</p>
+                <p className="text-2xl font-bold text-gray-900">{user?.canOfferHelp ? '8' : '2'}</p>
               </div>
             </div>
           </div>
@@ -141,16 +141,16 @@ const Dashboard = () => {
                 <span className="text-sm font-medium text-gray-600">Major:</span>
                 <span className="ml-2 text-sm text-gray-900">{user?.major}</span>
               </div>
-              {user?.role === 'buddy' && user?.skills && (
+              {user?.canOfferHelp && user?.modules && (
                 <div>
                   <span className="text-sm font-medium text-gray-600">Skills:</span>
                   <div className="mt-1 flex flex-wrap gap-1">
-                    {user.skills.map((skill, index) => (
+                    {user.modules.map((module, index) => (
                       <span
                         key={index}
                         className="inline-flex items-center px-2 py-1 rounded-full text-xs bg-blue-100 text-blue-800"
                       >
-                        {skill}
+                        {module}
                       </span>
                     ))}
                   </div>
@@ -166,7 +166,7 @@ const Dashboard = () => {
           <div className="bg-white rounded-lg shadow-sm border p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-4">Quick Actions</h3>
             <div className="space-y-3">
-              {user?.role === 'learner' ? (
+              {!user?.canOfferHelp ? (
                 <>
                   <button className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
                     <div className="font-medium text-gray-900">Find a Study Buddy</div>
@@ -205,7 +205,7 @@ const Dashboard = () => {
         <div className="mt-8 bg-white rounded-lg shadow-sm border p-6">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h3>
           <div className="space-y-4">
-            {user?.role === 'buddy' ? (
+            {user?.canOfferHelp ? (
               <>
                 <div className="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
                   <div className="w-2 h-2 bg-green-500 rounded-full"></div>
