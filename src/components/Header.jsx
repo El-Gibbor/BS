@@ -5,13 +5,16 @@ import AuthPage from './auth/AuthPage';
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [showAuthModal, setShowAuthModal] = useState(false);
+    const [authMode, setAuthMode] = useState('signin');
     const { isAuthenticated, user, signOut } = useAuth();
 
     const handleLogin = () => {
+        setAuthMode('signin');
         setShowAuthModal(true);
     };
 
     const handleSignUp = () => {
+        setAuthMode('signup');
         setShowAuthModal(true);
     };
 
@@ -180,6 +183,10 @@ const Header = () => {
                                 </button>
                             </div>
                             <AuthPage onSuccess={() => setShowAuthModal(false)} />
+                            <AuthPage
+                                defaultMode={authMode}
+                                onSuccess={() => setShowAuthModal(false)} 
+                            />
                         </div>
                     </div>
                 </div>

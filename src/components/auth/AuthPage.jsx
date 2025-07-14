@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { User, GraduationCap, Eye, EyeOff, Mail, Lock, UserPlus, LogIn, Check, X, Star, Clock, DollarSign } from 'lucide-react';
 
-const AuthPage = () => {
-  const [isSignUp, setIsSignUp] = useState(false);
+const AuthPage = ({ defaultMode = 'signin' }) => {
+  const [isSignUp, setIsSignUp] = useState(defaultMode === 'signup');
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
