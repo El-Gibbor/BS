@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { useAuth } from './auth/AuthContext';
 import AuthPage from './auth/AuthPage';
 
@@ -25,6 +26,21 @@ const Header = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    // Listen for the custom event from Get Started button
+    useEffect(() => {
+        const handleOpenAuthModal = (event) => {
+            const mode = event.detail?.mode || 'signup';
+            setAuthMode(mode);
+            setShowAuthModal(true);
+        };
+
+        window.addEventListener('openAuthModal', handleOpenAuthModal);
+
+        return () => {
+            window.removeEventListener('openAuthModal', handleOpenAuthModal);
+        };
+    }, []);
 
     return (
         <header className="bg-navy text-white shadow-lg sticky top-0 z-50">

@@ -1,17 +1,9 @@
 import React from 'react';
-import { useAuth } from './auth/AuthContext';
 
 const LandingPage = () => {
-    const { isAuthenticated } = useAuth();
-
     const handleGetStarted = () => {
-        if (isAuthenticated) {
-            // User is already authenticated, redirect to dashboard
-            window.location.reload(); // This will trigger the dashboard view
-        } else {
-            // Trigger auth modal or redirect to auth page
-            document.querySelector('button[onclick*="handleLogin"]')?.click();
-        }
+        // Dispatch a custom event that the Header component can listen to
+        window.dispatchEvent(new CustomEvent('openAuthModal', { detail: { mode: 'signup' } }));
     };
 
     const handleLearnMore = () => {
