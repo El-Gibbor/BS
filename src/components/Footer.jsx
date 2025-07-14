@@ -10,7 +10,7 @@ const Footer = () => {
                         <div className="flex items-center space-x-2 mb-4">
                             <div className="w-12 h-5 bg-gradient-to-br flex items-center justify-center">
                                 <img
-                                    src="/alu-logo-main.png"
+                                    src="/alu-logo.png"
                                     alt="ALU Logo"
                                     className="w-100 h-100 object-contain"
                                 />

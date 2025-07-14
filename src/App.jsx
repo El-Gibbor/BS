@@ -24,7 +24,6 @@ const AppContent = () => {
         <LandingPage />
       </main>
       <Footer />
-      <Footer />
     </div>
   );
 };

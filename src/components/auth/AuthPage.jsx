@@ -194,7 +194,7 @@ const AuthPage = ({ defaultMode = 'signin' }) => {
           <div className="lg:w-1/2 bg-gradient-to-br from-blue-900 to-blue-800 p-8 lg:p-12 text-white">
             <div className="flex items-center space-x-2 mb-5">
               <img
-                src="/alu-logo-main.png"
+                src="/alu-logo.png"
                 alt="ALU Logo"
                 className="w-12 object-contain"
               />

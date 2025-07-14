@@ -34,7 +34,7 @@ const Header = () => {
                     <div className="flex items-center space-x-2">
                         <div className="w-12 bg-gradient-to-br flex items-center justify-center">
                             <img
-                                src="/alu-logo-main.png"
+                                src="/alu-logo.png"
                                 alt="ALU Logo"
                                 className="w-100 h-100 object-contain"
                             />
@@ -185,7 +185,7 @@ const Header = () => {
                             <AuthPage onSuccess={() => setShowAuthModal(false)} />
                             <AuthPage
                                 defaultMode={authMode}
-                                onSuccess={() => setShowAuthModal(false)} 
+                                onSuccess={() => setShowAuthModal(false)}
                             />
                         </div>
                     </div>

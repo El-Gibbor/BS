@@ -138,24 +138,24 @@ const AuthPage = () => {
           <div className="lg:w-1/2 bg-gradient-to-br from-blue-900 to-blue-800 p-8 lg:p-12 text-white">
             <div className="flex items-center space-x-3 mb-8">
               <img
-                src="/alu-logo-main.png"
+                src="/alu-logo.png"
                 alt="ALU Logo"
                 className="w-12 h-8 object-contain"
               />
               <h1 className="text-2xl font-bold">StudyBuddy</h1>
             </div>
-            
+
             <div className="space-y-6">
               <h2 className="text-3xl lg:text-4xl font-bold leading-tight">
                 {isSignUp ? 'Join Our Community' : 'Welcome Back'}
               </h2>
               <p className="text-blue-100 text-lg">
-                {isSignUp 
+                {isSignUp
                   ? 'Connect with fellow ALU students and build a supportive learning network.'
                   : 'Continue your journey of collaborative learning and academic excellence.'
                 }
               </p>
-              
+
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center">
@@ -186,8 +186,8 @@ const AuthPage = () => {
               <button
                 onClick={() => setIsSignUp(false)}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-300 ${
-                  !isSignUp 
-                    ? 'bg-white text-blue-900 shadow-sm' 
+                  !isSignUp
+                    ? 'bg-white text-blue-900 shadow-sm'
                     : 'text-gray-600 hover:text-blue-900'
                 }`}
               >
@@ -197,8 +197,8 @@ const AuthPage = () => {
               <button
                 onClick={() => setIsSignUp(true)}
                 className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all duration-300 ${
-                  isSignUp 
-                    ? 'bg-white text-blue-900 shadow-sm' 
+                  isSignUp
+                    ? 'bg-white text-blue-900 shadow-sm'
                     : 'text-gray-600 hover:text-blue-900'
                 }`}
               >
@@ -286,7 +286,7 @@ const AuthPage = () => {
                     {errors.password}
                   </p>
                 )}
-                
+
                 {/* Password Strength Indicator */}
                 {isSignUp && formData.password && (
                   <div className="mt-2">

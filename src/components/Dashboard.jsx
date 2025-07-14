@@ -17,7 +17,7 @@ const Dashboard = () => {
           <div className="flex justify-between items-center py-4">
             <div className="flex items-center space-x-3">
               <img
-                src="/alu-logo-main.png"
+                src="/alu-logo.png"
                 alt="ALU Logo"
                 className="w-10 h-6 object-contain"
               />
