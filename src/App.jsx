@@ -13,9 +13,6 @@ const AppContent = () => {
   if (isAuthenticated) {
     return <Dashboard />;
   }
-  if (isAuthenticated) {
-    return <Dashboard />;
-  }
 
   return (
     <div className="min-h-screen flex flex-col">

@@ -182,7 +182,6 @@ const Header = () => {
                                     </svg>
                                 </button>
                             </div>
-                            <AuthPage onSuccess={() => setShowAuthModal(false)} />
                             <AuthPage
                                 defaultMode={authMode}
                                 onSuccess={() => setShowAuthModal(false)}
